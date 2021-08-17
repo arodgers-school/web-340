@@ -10,6 +10,7 @@ Resources:
 
 var http = require("http");
 
+// Respond to request from client
 function processRequest(req, res) {
   var body = "Adam's simple web server";
   var contentLength = body.length;
@@ -19,5 +20,7 @@ function processRequest(req, res) {
   });
   res.end(body);
 }
+
+// Open webserver and listen on port 8080
 var s = http.createServer(processRequest);
 s.listen(8080);
