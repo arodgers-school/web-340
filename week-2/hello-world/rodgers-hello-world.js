@@ -1,3 +1,13 @@
+/*
+Title: Exercise 2.2
+Author: Adam Rodgers
+Date: 22 Aug 2021
+Modified By: Adam Rodgers
+Description: Express Hello World
+Resources:
+
+*/
+
 // Load Express and http module and define app variable
 var express = require("express");
 var http = require("http");
