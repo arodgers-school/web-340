@@ -1,0 +1,10 @@
+{
+  "name": "mongoose-connection",
+  "author": "Adam Rodgers",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.9",
+    "morgan": "^1.10.0"
+  }
+}
