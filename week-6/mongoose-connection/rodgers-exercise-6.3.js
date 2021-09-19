@@ -1,7 +1,7 @@
 /*
 Title: Exercise 6.3
 Author: Adam Rodgers
-Date: 12 Sep 2021
+Date: 19 Sep 2021
 Modified By: Adam Rodgers
 Description: Mongoose Connect
 Resources:
