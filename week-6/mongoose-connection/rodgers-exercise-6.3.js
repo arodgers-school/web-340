@@ -12,7 +12,7 @@ Resources:
 var mongoose = require("mongoose");
 
 // Set Atlas connection string
-var mongoDB = "mongodb+srv://adrodgers:Buweb340pw@buwebdev-cluster-1.zjoha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+var mongoDB = "mongodb+srv://adrodgers:password@buwebdev-cluster-1.zjoha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 // Connect to db with connection string variable
 mongoose.connect(mongoDB, {
