@@ -1,7 +1,11 @@
 /*
-Title: Exercise 6.4
+Title: 
+  Exercise 6.4
+  Updated for Assignment 7.4
 Author: Adam Rodgers
-Date: 18 Sep 2021
+Date: 
+  18 Sep 2021
+  Updated 26 Sep 2021
 Modified By: Adam Rodgers
 Description: EMS
 Resources:
@@ -13,6 +17,28 @@ var express = require("express");
 var http = require("http");
 var path = require("path");
 var logger = require("morgan");
+var mongoose = require("mongoose");
+var Employee = require("./models/employee");
+
+// Set Atlas connection string (hid password)
+var mongoDB = "mongodb+srv://adrodgers:password@buwebdev-cluster-1.zjoha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+// Connect to db with connection string variable
+mongoose.connect(mongoDB, {
+  useMongoClient: true,
+});
+
+mongoose.Promise = global.Promise;
+
+var db = mongoose.connection;
+
+// Give error message if connection fails
+db.on("error", console.error.bind(console, "MongoDB connected error: "));
+
+// Give success msg if connection succedes
+db.once("open", function () {
+  console.log("Application connected to Atlas MongoDB instance");
+});
 
 var app = express();
 
@@ -22,6 +48,11 @@ app.set("view engine", "ejs");
 
 // Morgan options
 app.use(logger("short"));
+
+// Model
+var employee = new Employee({
+  name: "Adam",
+});
 
 // Set view for root directory
 app.get("/", function (request, response) {
