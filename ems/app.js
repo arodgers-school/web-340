@@ -51,7 +51,8 @@ app.use(logger("short"));
 
 // Model
 var employee = new Employee({
-  name: "Adam",
+  firstName: "Adam",
+  lastName: "Rodgers",
 });
 
 // Set view for root directory
