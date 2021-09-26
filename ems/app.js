@@ -21,7 +21,7 @@ var mongoose = require("mongoose");
 var Employee = require("./models/employee");
 
 // Set Atlas connection string (hid password)
-var mongoDB = "mongodb+srv://adrodgers:buwebdev340@buwebdev-cluster-1.zjoha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+var mongoDB = "mongodb+srv://adrodgers:password@buwebdev-cluster-1.zjoha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 // Connect to db with connection string variable
 mongoose.connect(mongoDB, {
