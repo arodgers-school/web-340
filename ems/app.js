@@ -4,6 +4,7 @@ Title:
   Updated for Assignment 7.4
               Exercise 8.2
               Exercise 8.3
+              Assignment 8.4
 Author: Adam Rodgers
 Date: 
   18 Sep 2021
@@ -28,7 +29,7 @@ var csrf = require("csurf");
 var Employee = require("./models/employee");
 
 // Set Atlas connection string (hid password)
-var mongoDB = "mongodb+srv://adrodgers:password@buwebdev-cluster-1.zjoha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+var mongoDB = "mongodb+srv://adrodgers:buwebdev340@buwebdev-cluster-1.zjoha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 // Connect to db with connection string variable
 mongoose.connect(mongoDB, {
@@ -97,10 +98,41 @@ app.get("/new", function (request, response) {
   });
 });
 
-// New routing for Assignment 8.3
+// Routing for 'list'
+app.get("/list", function (request, response) {
+  Employee.find({}, function (error, employees) {
+    if (error) throw error;
+
+    response.render("list", {
+      title: "Employee Names",
+      employees: employees,
+    });
+  });
+});
+
+// New routing for Exercise 8.3 - Updated for Assignment 8.4
 app.post("/process", function (request, response) {
-  console.log(request.body.txtName);
-  response.redirect("/");
+  // console.log(request.body.txtName);
+  if (!request.body.txtName) {
+    response.status(400).send("Entries must have a name");
+    return;
+  }
+
+  // Get form data
+  var employeeName = request.body.txtName;
+  console.log(employeeName);
+
+  var employee = new Employee({
+    name: employeeName,
+  });
+
+  // Save data
+  employee.save(function (error) {
+    if (error) throw error;
+    console.log(employeeName + " saved successfully!");
+  });
+
+  response.redirect("/list");
 });
 
 // Include static folder for CSS
