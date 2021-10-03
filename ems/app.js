@@ -2,10 +2,12 @@
 Title: 
   Exercise 6.4
   Updated for Assignment 7.4
+              Exercise 8.2
 Author: Adam Rodgers
 Date: 
   18 Sep 2021
   Updated 26 Sep 2021
+          03 October 2021
 Modified By: Adam Rodgers
 Description: EMS
 Resources:
@@ -17,6 +19,7 @@ var express = require("express");
 var http = require("http");
 var path = require("path");
 var logger = require("morgan");
+var helmet = require("helmet");
 var mongoose = require("mongoose");
 var Employee = require("./models/employee");
 
@@ -48,6 +51,8 @@ app.set("view engine", "ejs");
 
 // Morgan options
 app.use(logger("short"));
+// Initialize helmet
+app.use(helmet.xssFilter());
 
 // Model
 var employee = new Employee({
@@ -58,7 +63,7 @@ var employee = new Employee({
 // Set view for root directory
 app.get("/", function (request, response) {
   response.render("index", {
-    title: "Home page",
+    title: "XSS Prevention Example",
   });
 });
 
