@@ -16,6 +16,8 @@ Modified By: Adam Rodgers
 Description: EMS
 Resources:
 
+Fix for Heroku port error:
+  https://stackoverflow.com/questions/15693192/heroku-node-js-error-web-process-failed-to-bind-to-port-within-60-seconds-of
 */
 
 // Set requires
