@@ -5,11 +5,13 @@ Title:
               Exercise 8.2
               Exercise 8.3
               Assignment 8.4
+              Exercise 9.2
 Author: Adam Rodgers
 Date: 
   18 Sep 2021
   Updated 26 Sep 2021
           03 October 2021
+          10 October 2021
 Modified By: Adam Rodgers
 Description: EMS
 Resources:
@@ -133,6 +135,23 @@ app.post("/process", function (request, response) {
   });
 
   response.redirect("/list");
+});
+
+// New route for 9.2 for /view
+app.get("/view/:queryName", function (request, response) {
+  var queryName = request.params.queryName;
+  Employee.find({ name: queryName }, function (error, employees) {
+    if (error) throw error;
+    console.log(employees);
+    if (employees.length > 0) {
+      response.render("view", {
+        title: "Employee Record",
+        employee: employees,
+      });
+    } else {
+      response.redirect("/list");
+    }
+  });
 });
 
 // Include static folder for CSS
