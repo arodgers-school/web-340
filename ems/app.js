@@ -157,7 +157,7 @@ app.get("/view/:queryName", function (request, response) {
 // Include static folder for CSS
 app.use(express.static(__dirname + "/css"));
 
-// Start webserver on port 8080
-http.createServer(app).listen(8080, function () {
+// Start webserver on Heroku-specified port, or 8080 locally
+http.createServer(app).listen(process.env.PORT || 8080, function () {
   console.log("Application started on port 8080!");
 });
